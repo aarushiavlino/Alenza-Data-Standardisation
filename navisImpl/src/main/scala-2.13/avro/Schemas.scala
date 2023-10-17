@@ -1,0 +1,5 @@
+package avro
+
+object Schemas {
+
+}

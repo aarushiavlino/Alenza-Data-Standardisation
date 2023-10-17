@@ -1,0 +1,19 @@
+# Default ignored files
+# directory #
+**/.idea
+logs
+
+# files #
+*.log
+*.class
+**/target
+**/project/project
+**/project/target
+
+**/kafka-stream-state
+
+Backup\.idea/\.name
+
+Backup\.idea/modules/CurrentStateServer-build\.iml
+
+Backup\.idea/modules/CurrentStateServer\.iml
