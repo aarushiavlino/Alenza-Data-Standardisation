@@ -10,7 +10,7 @@ import scala.jdk.CollectionConverters._
 
 object AvroSerdes {
 
-  private val props = Map("schema.registry.url" -> "http://pac-sandbox-kafka.avlino.az:8081/")
+  private val props = Map("schema.registry.url" -> "http://rwg-dev-kafka:8081/")
 
   implicit def keySerde[K >: Null](implicit krf: KeyRecordFormat[K]): Serde[K] = {
     val avroKeySerde = new GenericAvroSerde
@@ -28,7 +28,7 @@ object AvroSerdes {
     def forCaseClass[T >: Null](implicit rf: RecordFormat[T]): Serde[T] = {
       Serdes.fromFn(
         (topic, data) => inner.serializer().serialize(topic, rf.to(data)),
-        (topic, bytes) => Option(rf.from(inner.deserializer().deserialize(topic, bytes)))
+        (topic, bytes) => if(bytes==null)None else Option(rf.from(inner.deserializer().deserialize(topic, bytes)))
       )
     }
   }

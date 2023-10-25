@@ -18,7 +18,8 @@ object Dependencies {
     val smlCommon         = "2.3.1"
 //    val circeVersion = "0.14.1"
     val kafkaStreamsCirce ="fbee94b"
-
+    val jodaTime="2.12.5"
+val testcontainersScalaVersion="0.41.0"
   }
 
   private def commonTestDependencies = Seq(
@@ -26,10 +27,10 @@ object Dependencies {
   )
 
   lazy val testAndITTestDependencies = (commonTestDependencies ++ Seq(
-    "com.dimafeng" %% "testcontainers-scala" % "0.40.15",
-    "com.dimafeng" %% "testcontainers-scala-mysql" % "0.40.15",
-    "com.dimafeng" %% "testcontainers-scala-kafka" % "0.40.15",
-    "com.dimafeng" %% "testcontainers-scala-mockserver" % "0.40.15",
+    "com.dimafeng" %% "testcontainers-scala" % Versions.testcontainersScalaVersion,
+    "com.dimafeng" %% "testcontainers-scala-mysql" % Versions.testcontainersScalaVersion,
+    "com.dimafeng" %% "testcontainers-scala-kafka" % Versions.testcontainersScalaVersion,
+    "com.dimafeng" %% "testcontainers-scala-mockserver"% Versions.testcontainersScalaVersion,
     "org.mock-server" % "mockserver-client-java" % "5.14.0", // Not latests, but it needs to match the server's version on testcontainers
   ))
 
@@ -56,6 +57,7 @@ object Dependencies {
     lazy val circeCore          = "io.circe"                %% "circe-core"              % Versions.circe
     lazy val kafkaStreamsCirce="com.goyeau" %% "kafka-streams-circe" % Versions.kafkaStreamsCirce
    lazy val zioStreams= "dev.zio" %% "zio-streams" % Versions.zio % Test
+    lazy val jodaTime="joda-time" % "joda-time" % Versions.jodaTime
   }
 
 }

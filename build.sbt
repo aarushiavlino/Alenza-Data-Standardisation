@@ -28,11 +28,25 @@ val libraries= Seq(
   Libraries.smlTagging,
   Libraries.circeCore,
   Libraries.kafkaStreamsCirce,
+  Libraries.jodaTime
 )++testAndITTestDependencies
 
 
 lazy val domain   = project.settings(commonSettings)
 lazy val navisImpl: Project = project.settings(commonSettings).dependsOn(domain)
 lazy val opusImpl: Project = project.settings(commonSettings).dependsOn(domain)
-lazy val platform=  project.settings(commonSettings).dependsOn(navisImpl,opusImpl)
+lazy val platform=  project
+  .settings(commonSettings,
+    /*assembly / mainClass := Some("com.acme.service.RetailProductApp"),
+    assembly / assemblyJarName := "run.jar",*/
+    Defaults.itSettings
+//    IntegrationTest / test := (IntegrationTest / test)/*.dependsOn(assembly)*/.value,
+//    IntegrationTest / dependencyClasspath := (IntegrationTest / dependencyClasspath).value ++ (Test / exportedProducts).value,
+//    Defaults.itSettings
+    )
+
+
+  .configs(IntegrationTest)
+  .dependsOn(navisImpl,opusImpl)
+
 //lazy val registry =project.settings(commonSettings).dependsOn(navisImpl,opusImpl)

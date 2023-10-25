@@ -1,3 +1,5 @@
+import org.apache.kafka.clients.producer.ProducerRecord
+
 trait TestContainersSpec {
   _: BaseSpec with Containers with KafkaHelper =>
 
