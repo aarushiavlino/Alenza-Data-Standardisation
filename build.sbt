@@ -28,7 +28,8 @@ val libraries= Seq(
   Libraries.smlTagging,
   Libraries.circeCore,
   Libraries.kafkaStreamsCirce,
-  Libraries.jodaTime
+  Libraries.jodaTime,
+  Libraries.groovy
 )++testAndITTestDependencies
 
 

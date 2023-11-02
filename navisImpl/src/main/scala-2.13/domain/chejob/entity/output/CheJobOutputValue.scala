@@ -11,5 +11,7 @@ case class CheJobOutputValue(containerId: String,
                               moveType: String
                              )
 
-case class CheJobOutputKey(workInstructionKey: String,
-                           containerVisitId: String)
+case class CheJobOutputKey(
+                            workInstructionKey: String,
+                           containerVisitId: String
+                          )

@@ -3,9 +3,9 @@ package registry
 object Constants {
 
   object Customer {
-    val NAVIS = "navis"
-    val RWG   = "rwg"
-    val OPUS  = "opus"
+    val NAVIS = "NAVIS"
+    val RWG   = "RWG"
+    val OPUS  = "OPUS"
   }
 
   object Table {

@@ -12,7 +12,7 @@ trait Containers extends BaseContainers {
   protected lazy val serviceContainer: GenericContainer = baseAppContainer(
     name = "MainApp",
     jarName = "run.jar",
-    mainClass = "app.MainAppServer1",
+    mainClass = "app.MainAppServer1.scala",
     baseFolder = "platform/target/scala-2.13",
     envVars = Map(
       "ENVIRONMENT" -> "local",

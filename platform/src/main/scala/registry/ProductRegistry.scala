@@ -10,7 +10,7 @@ import domain.vesselVisit.service.DefaultVesselVisitTransformer
 import domain.vesselVisitDetails.service.DefaultVesselVisitDetailsTransformer
 object ProductRegistry {
   private val navis: Map[String, StreamsBuilder => KStreamsTransformer[_ <: Product, _ <: Product]] = Map(
-    Table.CHE_JOB -> ((builder: StreamsBuilder) => new DefaultCheJobTransformer(builder)),
+    Table.CHE_JOB -> ((builder: StreamsBuilder) => new DefaultCheJobTransformer(builder,Customer.RWG,Table.CHE_JOB)),
     Table.CONTAINER_TERMINAL_VISIT_ACTIVE -> ((builder: StreamsBuilder) => new DefaultContainerTerminalVisitTransformer(builder)),
     Table.VESSEL_VISIT -> ((builder: StreamsBuilder) => new DefaultVesselVisitTransformer(builder)),
     Table.VESSEL_VISIT_DETAILS -> ((builder: StreamsBuilder) => new DefaultVesselVisitDetailsTransformer(builder)),
@@ -18,7 +18,7 @@ object ProductRegistry {
   )
 
   private val rwg: Map[String, StreamsBuilder => KStreamsTransformer[_ <: Product, _ <: Product]] = Map(
-    Table.CHE_JOB -> ((builder: StreamsBuilder) => new DefaultCheJobTransformer(builder)),
+    Table.CHE_JOB -> ((builder: StreamsBuilder) => new DefaultCheJobTransformer(builder,Customer.RWG,Table.CHE_JOB)),
     Table.CONTAINER_TERMINAL_VISIT_ACTIVE -> ((builder: StreamsBuilder) => new DefaultContainerTerminalVisitTransformer(builder)),
     Table.VESSEL_VISIT -> ((builder: StreamsBuilder) => new DefaultVesselVisitTransformer(builder)),
     Table.VESSEL_VISIT_DETAILS -> ((builder: StreamsBuilder) => new DefaultVesselVisitDetailsTransformer(builder)),

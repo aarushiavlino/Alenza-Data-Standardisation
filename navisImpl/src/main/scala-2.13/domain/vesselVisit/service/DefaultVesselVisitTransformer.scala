@@ -10,10 +10,12 @@ import org.apache.kafka.streams.scala.kstream.KStream
 import avro.RecordFormats._
 import com.avlino.avro.AvroSerdes._
 import config.RWGAlenzaConfig
+import groovy.lang.Binding
+import groovy.util.GroovyScriptEngine
 import org.apache.kafka.streams.scala.ImplicitConversions._
 import org.apache.kafka.streams.scala.serialization.Serdes.stringSerde
 class DefaultVesselVisitTransformer (builder:StreamsBuilder) extends KStreamsTransformer[VesselVisitOutputKey,VesselVisitOutputValue]{
-  override def transform: KStream[VesselVisitOutputKey, VesselVisitOutputValue] = {
+  override def transform(groovyScriptEngine: GroovyScriptEngine,binding: Binding): KStream[VesselVisitOutputKey, VesselVisitOutputValue] = {
     val vesselVisitStream=builder.stream[String,VesselVisitInput](RWGAlenzaConfig.vesselVisit).map((k,v)=>(v.tosKey,v))
     vesselVisitStream.map[VesselVisitOutputKey,VesselVisitOutputValue]{(k,v)=>
       (

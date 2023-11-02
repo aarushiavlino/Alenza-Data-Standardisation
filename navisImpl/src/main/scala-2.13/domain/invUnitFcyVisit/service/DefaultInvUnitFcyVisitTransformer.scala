@@ -11,8 +11,10 @@ import org.apache.kafka.streams.scala.ImplicitConversions._
 import org.apache.kafka.streams.scala.serialization.Serdes.stringSerde
 import avro.RecordFormats._
 import com.avlino.avro.AvroSerdes._
+import groovy.lang.Binding
+import groovy.util.GroovyScriptEngine
 class DefaultInvUnitFcyVisitTransformer(builder:StreamsBuilder) extends KStreamsTransformer[InventoryFacilityVisitOutputKey,InventoryFacilityVisitOutputValue]{
-  override def transform: KStream[InventoryFacilityVisitOutputKey, InventoryFacilityVisitOutputValue] = {
+  override def transform(groovyScriptEngine: GroovyScriptEngine,binding: Binding): KStream[InventoryFacilityVisitOutputKey, InventoryFacilityVisitOutputValue] = {
     val inventoryFaciltyVisitInputStream=builder.stream[String,InventoryFaciltyVisitInput](RWGAlenzaConfig.invFcyUnitVisit)
       .filter((k,v)=>v.after.arrive_pos_loctype.equals("VESSEL"))
       .map((k,v)=>(v.after.gkey,v))

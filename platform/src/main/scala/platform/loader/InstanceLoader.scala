@@ -13,7 +13,7 @@ object InstanceLoaderImplWithRegistry extends InstanceLoader {
   def getInstance(customer: String, tableName: String)(
       implicit builder: StreamsBuilder
   ): KStreamsTransformer[_ <: Product, _ <: Product] =
-    ProductRegistry.get(customer.toLowerCase, tableName.toLowerCase)(builder)
+    ProductRegistry.get(customer.toUpperCase, tableName.toLowerCase)(builder)
 }
 
 

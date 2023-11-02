@@ -20,6 +20,7 @@ object Dependencies {
     val kafkaStreamsCirce ="fbee94b"
     val jodaTime="2.12.5"
 val testcontainersScalaVersion="0.41.0"
+    val groovy="4.0.15"
   }
 
   private def commonTestDependencies = Seq(
@@ -58,6 +59,8 @@ val testcontainersScalaVersion="0.41.0"
     lazy val kafkaStreamsCirce="com.goyeau" %% "kafka-streams-circe" % Versions.kafkaStreamsCirce
    lazy val zioStreams= "dev.zio" %% "zio-streams" % Versions.zio % Test
     lazy val jodaTime="joda-time" % "joda-time" % Versions.jodaTime
+    lazy val groovy="org.apache.groovy" % "groovy" % Versions.groovy
+    lazy val exec_maven_plugin = "org.codehaus.mojo" % "exec-maven-plugin" % "3.1.0"
   }
 
 }
