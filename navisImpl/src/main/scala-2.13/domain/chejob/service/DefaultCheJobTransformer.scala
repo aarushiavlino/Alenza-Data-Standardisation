@@ -24,6 +24,7 @@ class DefaultCheJobTransformer(builder: StreamsBuilder, customerName: String, ta
     }
   }
 
+
   override def getRecordFormat(
       key: CheJobOutputKey,
       value: CheJobOutputValue

@@ -9,6 +9,6 @@ class AlenzaConfig {
   def outputTopic(customerName: String, tableName: String) = ConfigLoader().getRequiredConfigValueAndFailIfMissingOrInvalid[String](s"$customerName.Standardised.Kafka.Topic.Dst.$tableName")
 
   //  def scriptUrl(customerName:String,tableName:String)= ConfigLoader().getRequiredConfigValueAndFailIfMissingOrInvalid[String](s"$customerName.Standardised.GroovyScript.URL.$tableName")
-  def scriptUrl(customerName: String, tableName: String) = "navisImpl\\src\\main\\resources"
+//  def scriptUrl(customerName: String, tableName: String) = "navisImpl\\src\\main\\resources"
 }
 object AlenzaConfigLive extends AlenzaConfig

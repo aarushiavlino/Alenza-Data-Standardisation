@@ -6,7 +6,6 @@ import org.apache.kafka.streams.{StreamsBuilder, scala}
 import platform.kafka.TopologyBuilder
 import platform.loader.{InstanceLoaderImplWithConfig, InstanceLoaderImplWithRegistry}
 
-object MainAppServer1 extends App
 object MainAppServer extends AlenzaKafkaServer{
 
   lazy val customer=System.getenv("CUSTOMER").toUpperCase
