@@ -17,7 +17,7 @@ import groovy.util.GroovyScriptEngine
 import org.apache.kafka.streams.scala.ImplicitConversions._
 import org.apache.kafka.streams.scala.serialization.Serdes.stringSerde
 class DefaultContainerTerminalVisitTransformer (builder:StreamsBuilder) extends KStreamsTransformer[ContainerTerminalVisitOutputKey, ContainerTerminalVisitOutputValue]{
-  override def transform(groovyScriptEngine: GroovyScriptEngine,binding: Binding): KStream[ContainerTerminalVisitOutputKey, ContainerTerminalVisitOutputValue] = {
+  override def transform: KStream[ContainerTerminalVisitOutputKey, ContainerTerminalVisitOutputValue] = {
     val containerVisitStream=builder.stream[String,ContainerTerminalVisitActiveInput](RWGAlenzaConfig.containerTerminalVisitActive)
       .filterNot((k,v)=>v==null)
       .map((k,v)=>(v.containerTerminalVisitKey,v))

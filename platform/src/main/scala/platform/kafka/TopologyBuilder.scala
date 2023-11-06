@@ -16,8 +16,7 @@ class TopologyBuilder(instanceLoader: InstanceLoader) {
 
   def build(outputTopic: String, customerName: String, tableName: String)(implicit builder: StreamsBuilder) = {
     val streamsBuilder = instanceLoader.getInstance(customerName, tableName)
-    val groovyScriptEngine = new GroovyScriptEngine(AlenzaConfigLive.scriptUrl(customerName, tableName))
-    val streams        = streamsBuilder.result(groovyScriptEngine, new Binding())
+    val streams        = streamsBuilder.result
     streams.to(outputTopic)
     builder.build()
   }

@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class DefaultVesselVisitDetailsTransformer(builder:StreamsBuilder) extends KStreamsTransformer[VesselVisitDetailsOutputKey,VesselVisitDetailsOutputValue]{
-  override def transform(groovyScriptEngine: GroovyScriptEngine,binding: Binding): KStream[VesselVisitDetailsOutputKey, VesselVisitDetailsOutputValue] = {
+  override def transform: KStream[VesselVisitDetailsOutputKey, VesselVisitDetailsOutputValue] = {
     val vesselVisitDetailsStream=builder.stream[String,VesselVisitDetailsInput](RWGAlenzaConfig.vesselVisitDetails)
 
     vesselVisitDetailsStream.map[VesselVisitDetailsOutputKey, VesselVisitDetailsOutputValue]{(k,v)=>
