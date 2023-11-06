@@ -9,9 +9,10 @@ object Testing extends App{
   val bindings= new Binding()
   while (true) {
     Thread.sleep(5000l)
-    bindings.setProperty("testObj",SampleClass("aarushi",29))
+    bindings.setProperty("testObj",SampleClass(NameClass("aarushi"),"Bangalore"))
     val result=groovyEngine.run("Test.groovy",bindings )
     println(result)
   }
 }
-case class SampleClass(name:String, age:Int)
+case class NameClass(name:String)
+case class SampleClass(nameClass:NameClass, city:String)

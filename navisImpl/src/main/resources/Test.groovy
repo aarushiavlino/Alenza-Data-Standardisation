@@ -1,17 +1,18 @@
+import domain.chejob.service.NameClass
 import domain.chejob.service.SampleClass
 
 class Test extends Script {
     @Override
     def run() {
-        test(binding.getProperty("testObj") as GroovyObject)
+        test(binding.getProperty("testObj") as Object)
 //        invokeMethod("test",binding.getProperty("testObj"))
 //        println "Hello Testing"
     }
 
-    def test(GroovyObject testObj) {
+    def test(Object testObj) {
 //        println "Hello " + testObj.getProperties().get("name") + " you have turned  " + testObj.getProperties().get("age")
-//        "Hello " + testObj.getProperties().get("name") + " you have turned  " + testObj.getProperties().get("age")
-        SampleClass.apply(testObj.getProperties().get("name")+" Maheshwari " as String, testObj.getProperties().get("age") +1 as int)
+        NameClass nameClass= testObj.getProperties().get("nameClass") as NameClass
+        SampleClass.apply(NameClass.apply(nameClass.name() + "") as NameClass, testObj.getProperties().get("city") as String)
     }
 
 }

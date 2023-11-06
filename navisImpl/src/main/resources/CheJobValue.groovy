@@ -8,7 +8,7 @@ class CheJobValue extends Script{
         transform(binding.getProperty("cheJobInputValue") as Object)
     }
 
-    Object transform(Object cheJobInput){
+    static Object transform(Object cheJobInput){
         Map propertiesMap=cheJobInput.getProperties()
         CheJobOutputValue.apply(propertiesMap.getOrDefault("containerId", "UNKNOWN") as String,
                 propertiesMap.getOrDefault("workInstructionKey", "UNKNOWN") as String,

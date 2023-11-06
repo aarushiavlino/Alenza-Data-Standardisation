@@ -7,7 +7,7 @@ class CheJobKey extends Script{
         transform(cheJobInput)
     }
 
-    Object transform(Object cheJobInput){
+    static Object transform(Object cheJobInput){
         Map propertiesMap=cheJobInput.getProperties()
         CheJobOutputKey.apply(propertiesMap.getOrDefault("workInstructionKey", "UNKNOWN") as String,
                 propertiesMap.getOrDefault("containerTerminalVisitKey", "UNKNOWN") as String)
